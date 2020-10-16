@@ -1,14 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import LetterKey from "./LetterKey";
+import letterData from "../data/letters.json";
 
 import { colors, contentWidth } from "./GlobalStyles";
 
-const Keyboard = ({}) => (
-  <Wrapper>
-    <LetterKey />
-  </Wrapper>
-);
+const Keyboard = ({ usedLetters, guessHandler }) => {
+  //console.log("The used Letters are: ", usedLetters);
+  return (
+    <Wrapper>
+      {letterData.map((ele) => {
+        let included = usedLetters.includes(ele);
+        return (
+          <LetterKey
+            guessHandler={guessHandler}
+            l={ele}
+            disable={included}
+            key={`letter-${ele}`}
+          />
+        );
+      })}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   background: ${colors.yellow};

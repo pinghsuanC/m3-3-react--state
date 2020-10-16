@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import { colors } from "./GlobalStyles";
 
-const LetterKey = ({}) => {
-  return <Wrapper>a</Wrapper>;
+const LetterKey = ({l, disable, guessHandler}) => {
+return <Wrapper disabled={disable} onClick={() => {guessHandler(l)}} key={l} >{l}</Wrapper>;
 };
 
 const Wrapper = styled.button`

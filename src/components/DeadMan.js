@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { colors } from "./GlobalStyles";
 
-const DeadMan = () => {
+const DeadMan = ({ usedBody }) => {
+  //console.log(usedBody);
   return (
-    <SVG>
+    <SVG used={usedBody}>
       {/* Structure */}
       <line x1="60" y1="20" x2="200" y2="20" />
       <line x1="200" y1="20" x2="200" y2="70" />
@@ -38,6 +39,74 @@ const SVG = styled.svg`
   stroke-width: 4px;
   stroke-linecap: round;
 
+  .head {
+    stroke: ${(prop) => {
+      return prop.used.includes("head") ? "${colors.yellow};" : "transparent;";
+    }};
+  }
+  .body {
+    stroke: ${(prop) => {
+      return prop.used.includes("body") ? "${colors.yellow};" : "transparent;";
+    }};
+  }
+  .left-arm {
+    stroke: ${(prop) => {
+      return prop.used.includes("left-arm")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .right-arm {
+    stroke: ${(prop) => {
+      return prop.used.includes("right-arm")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .left-leg {
+    stroke: ${(prop) => {
+      return prop.used.includes("left-leg")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .right-leg {
+    stroke: ${(prop) => {
+      return prop.used.includes("right-leg")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .left-hand {
+    stroke: ${(prop) => {
+      return prop.used.includes("left-hand")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .right-hand {
+    stroke: ${(prop) => {
+      return prop.used.includes("right-hand")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .left-foot {
+    stroke: ${(prop) => {
+      return prop.used.includes("left-foot")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+  .right-foot {
+    stroke: ${(prop) => {
+      return prop.used.includes("right-foot")
+        ? "${colors.yellow};"
+        : "transparent;";
+    }};
+  }
+
+  /*
   .head,
   .body,
   .left-arm,
@@ -47,9 +116,8 @@ const SVG = styled.svg`
   .left-hand,
   .right-hand,
   .left-foot,
-  .right-foot {
-    /* stroke: transparent; */
-  }
+  .right-foot 
+  */
 `;
 
 export default DeadMan;

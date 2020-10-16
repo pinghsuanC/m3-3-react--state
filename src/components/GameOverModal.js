@@ -3,13 +3,14 @@ import styled from "styled-components";
 import Button from "./Button";
 import { colors } from "./GlobalStyles";
 
-const GameOverModal = ({}) => {
+const GameOverModal = ({ hasWin, word, restartHandler }) => {
+  let result = hasWin ? "Won" : "Lose";
   return (
-    <Wrapper>
+    <Wrapper key={"over-model"}>
       <Content>
-        <Heading>You ___ !!🤩😱</Heading>
-        <Word>👉 the word 👈</Word>
-        <Button>btn 3</Button>
+        <Heading>You {result} !!🤩😱</Heading>
+        <Word>👉 {word} 👈</Word>
+        <Button onClickFunc={restartHandler}>New game</Button>
       </Content>
     </Wrapper>
   );

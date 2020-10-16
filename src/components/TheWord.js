@@ -1,7 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 
-const TheWord = ({}) => <Wrapper>____ ____ ____ ____ </Wrapper>;
+const TheWord = ({ word, status }) => {
+  // blocking re-setting words everytime
+  if (!word.hasSet) {
+    //console.log(word);
+    let line = "____ ";
+    let result = "";
+    for (let n = 0; n < word.str.length; n++) {
+      let tmp = Math.random();
+      if (tmp > 0.2) {
+        word.revealed[n] = line;
+      } else {
+        word.revealed[n] = `${word.str[n]} `;
+      }
+      result += `${word.revealed[n]} `;
+    }
+    word.hasSet = true;
+    return <Wrapper>{result}</Wrapper>;
+  } else {
+    return (
+      <>
+        <Wrapper>{word.revealed.join(" ")}</Wrapper>
+      </>
+    );
+  }
+};
 
 const Wrapper = styled.p`
   font-size: 20px;
